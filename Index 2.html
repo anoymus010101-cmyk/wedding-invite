@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rohan ❤️ Pari Wedding</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+
+<style>
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Playfair Display', serif;
+  text-align: center;
+  background: linear-gradient(to bottom, #f5e6c8, #e6c27a);
+  overflow-x: hidden;
+}
+
+/* Royal Card */
+.card {
+  margin: 50px 20px;
+  padding: 30px;
+  border-radius: 20px;
+  background: #fff8e7;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  border: 5px solid gold;
+}
+
+/* Golden Shine Text */
+.gold-text {
+  background: linear-gradient(45deg, gold, #fff8dc, gold);
+  -webkit-background-clip: text;
+  color: transparent;
+  animation: shine 3s linear infinite;
+  background-size: 200%;
+}
+
+@keyframes shine {
+  0% { background-position: -200px; }
+  100% { background-position: 200px; }
+}
+
+button {
+  padding: 12px 30px;
+  border-radius: 30px;
+  border: none;
+  background: gold;
+  font-weight: bold;
+  font-size: 16px;
+  cursor: pointer;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.section {
+  padding: 40px 20px;
+}
+
+/* Map Button */
+.map-btn {
+  display: inline-block;
+  padding: 12px 25px;
+  background: gold;
+  color: black;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+/* Flower Animation */
+.flower-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.flower {
+  position: absolute;
+  top: -50px;
+  font-size: 20px;
+  animation: fall linear infinite;
+}
+
+@keyframes fall {
+  to {
+    transform: translateY(100vh);
+  }
+}
+</style>
+</head>
+
+<body>
+
+<audio id="music" loop>
+  <source src="https://www2.cs.uic.edu/~i101/SoundFiles/StarWars60.wav" type="audio/wav">
+</audio>
+
+<div class="flower-container"></div>
+
+<div class="card">
+  <h2>🙏 Shree Ganeshay Namah</h2>
+  <h1 class="gold-text">Rohan ❤️ Pari</h1>
+  <button onclick="startInvitation()">Enter Invitation</button>
+</div>
+
+<div id="mainContent" style="display:none;">
+
+<div class="section">
+  <h2 class="gold-text">Wedding Countdown</h2>
+  <h3 id="countdown"></h3>
+</div>
+
+<div class="section">
+  <h2 class="gold-text">Wedding Functions</h2>
+  <p>🌼 Haldi Ceremony</p>
+  <p>🌿 Mehendi Ceremony</p>
+  <p>🎶 Sangeet Night</p>
+  <p>💍 Wedding</p>
+  <p>🍽️ Reception</p>
+</div>
+
+<div class="section">
+  <h2 class="gold-text">Venue</h2>
+  <p>Royal Palace Banquet Hall<br>Jaipur Sanganer</p>
+  <a href="https://www.google.com/maps/search/?api=1&query=Royal+Palace+Banquet+Hall+Jaipur+Sanganer"
+     target="_blank"
+     class="map-btn">📍 View Location</a>
+</div>
+
+<div class="section">
+  <h2 class="gold-text">With Blessings Of</h2>
+  <p>Sohanlal (Papa) & Geeta Devi (Mummy)</p>
+  <p>Grand Parents: Usmarlal & Sohni Devi</p>
+  <p>Bhagchand & Laxmi | Ramesh & Somvati</p>
+  <p>Bhagirat & Amrati</p>
+</div>
+
+</div>
+
+<script>
+
+/* Start Invitation */
+function startInvitation() {
+  document.getElementById("mainContent").style.display = "block";
+  document.querySelector(".card").style.display = "none";
+  document.getElementById("music").play();
+}
+
+/* Countdown */
+const weddingDate = new Date("Feb 23, 2026 20:00:00").getTime();
+
+setInterval(() => {
+  const now = new Date().getTime();
+  const gap = weddingDate - now;
+
+  const days = Math.floor(gap / (1000 * 60 * 60 * 24));
+  const hours = Math.floor((gap / (1000 * 60 * 60)) % 24);
+  const minutes = Math.floor((gap / (1000 * 60)) % 60);
+  const seconds = Math.floor((gap / 1000) % 60);
+
+  document.getElementById("countdown").innerHTML =
+    `${days} Days ${hours} Hours ${minutes} Minutes ${seconds} Seconds`;
+}, 1000);
+
+/* Flower Animation */
+function createFlower() {
+  const flower = document.createElement("div");
+  flower.classList.add("flower");
+  flower.innerHTML = "🌸";
+  flower.style.left = Math.random() * 100 + "vw";
+  flower.style.animationDuration = (Math.random() * 3 + 3) + "s";
+  document.querySelector(".flower-container").appendChild(flower);
+
+  setTimeout(() => {
+    flower.remove();
+  }, 6000);
+}
+
+setInterval(createFlower, 500);
+
+</script>
+
+</body>
+</html>

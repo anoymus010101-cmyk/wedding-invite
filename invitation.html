@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Wedding Details</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body{
+margin:0;
+padding:0;
+background:linear-gradient(to bottom,#000000,#4b0000);
+color:white;
+font-family:Georgia, serif;
+text-align:center;
+}
+
+/* Section Styling */
+.section{
+padding:50px 20px;
+}
+
+h2{
+color:gold;
+font-size:32px;
+text-shadow:0 0 15px gold;
+margin-bottom:20px;
+}
+
+p{
+font-size:18px;
+margin:8px 0;
+}
+
+/* Gold Frame */
+.gold-border{
+border:6px solid gold;
+padding:10px;
+display:inline-block;
+border-radius:20px;
+box-shadow:0 0 25px gold;
+}
+
+/* Image */
+img{
+width:260px;
+border-radius:15px;
+}
+
+/* Map Button */
+.map-btn{
+display:inline-block;
+margin-top:15px;
+background:gold;
+color:black;
+padding:10px 25px;
+border-radius:30px;
+text-decoration:none;
+font-weight:bold;
+}
+
+/* Video */
+.video{
+width:90%;
+max-width:400px;
+border:4px solid gold;
+border-radius:15px;
+}
+
+/* Fireworks */
+.firework{
+position:fixed;
+width:6px;
+height:6px;
+border-radius:50%;
+animation:explode 1s ease-out forwards;
+}
+
+@keyframes explode{
+0%{transform:scale(1);}
+100%{transform:scale(20);opacity:0;}
+}
+</style>
+</head>
+
+<body>
+
+<div class="section">
+<h2>💍 Wedding Ceremony</h2>
+<p>📅 23 February 2026</p>
+<p>⏰ 8:00 PM</p>
+<p>🏰 Royal Palace, Jaipur Sanganer</p>
+
+<a class="map-btn" href="https://www.google.com/maps/search/Royal+Palace+Jaipur+Sanganer" target="_blank">
+📍 View on Google Maps
+</a>
+</div>
+
+<div class="section">
+<h2>👨‍👩‍👧 Parents</h2>
+<p>🤵 Groom: Rohan</p>
+<p>Son of: Mr. & Mrs. Sharma</p>
+<br>
+<p>👰 Bride: Pari</p>
+<p>Daughter of: Mr. & Mrs. Verma</p>
+</div>
+
+<div class="section">
+<h2>👰🤵 Couple</h2>
+<div class="gold-border">
+<img src="couple.jpg" alt="Couple Photo">
+</div>
+</div>
+
+<div class="section">
+<h2>🎥 Pre Wedding Video</h2>
+<video class="video" controls>
+<source src="video.mp4" type="video/mp4">
+</video>
+</div>
+
+<script>
+// Fireworks effect
+setInterval(()=>{
+let fw=document.createElement("div");
+fw.className="firework";
+fw.style.left=Math.random()*100+"vw";
+fw.style.top=Math.random()*100+"vh";
+fw.style.background="hsl("+Math.random()*360+",100%,50%)";
+document.body.appendChild(fw);
+setTimeout(()=>fw.remove(),1000);
+},700);
+</script>
+
+</body>
+</html>
